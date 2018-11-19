@@ -12,24 +12,24 @@
 
 use Carbon\Carbon;
 
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\User::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->name,
-        'email' => $faker->email,
+        "name" => $faker->name,
+        "email" => $faker->email,
     ];
 });
 
-$factory->define(App\TechEvents::class, function (Faker\Generator $faker) {
-    $startTime = Carbon::createFromTimeStamp($faker->dateTimeBetween('now', '+1 month')->getTimestamp());
+$factory->define(App\Models\TechEvents::class, function (Faker\Generator $faker) {
+    $startTime = Carbon::createFromTimeStamp($faker->dateTimeBetween("now", "+1 month")->getTimestamp());
     return [
-        'name' => $faker->word,
-        'starts' => $startTime,
-        'ends' => Carbon::createFromFormat('Y-m-d H:i:s', $startTime)->addHours(2),
-        'status' => 'CONFIRMED',
-        'summary' => $faker->sentence($nbWords = 6, $variableNbWords = true),
-        'location' => $faker->word,
-        'uid' => $faker->domainName,
-        'created_at' => Carbon::now()->toDateTimeString(),
-        'updated_at' => Carbon::now()->toDateTimeString()
+        "name" => $faker->word,
+        "starts" => $startTime,
+        "ends" => Carbon::createFromFormat("Y-m-d H:i:s", $startTime)->addHours(2),
+        "status" => "CONFIRMED",
+        "summary" => $faker->sentence($nbWords = 6, $variableNbWords = true),
+        "location" => $faker->word,
+        "uid" => $faker->domainName,
+        "created_at" => Carbon::now()->toDateTimeString(),
+        "updated_at" => Carbon::now()->toDateTimeString()
     ];
 });

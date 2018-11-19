@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\TechEvents;
+use App\Models\TechEvents;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,5 +13,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         factory(TechEvents::class, 10)->create();
+        $this->call("SubscriberTableSeeder");
     }
 }
